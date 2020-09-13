@@ -114,3 +114,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# OS X
+.DS_Store

@@ -1,7 +1,18 @@
 {
   "name": "serverless-twilio-dictionary",
-  "version": "0.0.0",
+  "description": "A serverless dictionary completely hosted in a Twilio account",
+  "version": "0.0.1",
   "private": true,
+  "keywords": [
+    "serverless",
+    "twilio"
+  ],
+  "author": "Mattias Severson",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matsev/serverless-twilio-dictionary"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "twilio-run",
@@ -9,7 +20,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "twilio-run": "^2.6.0"
+    "twilio-run": "^2.8.0"
   },
   "engines": {
     "node": "10"
