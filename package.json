@@ -20,6 +20,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "twilio-cli": "^2.8.1",
     "twilio-run": "^2.8.0"
   },
   "engines": {

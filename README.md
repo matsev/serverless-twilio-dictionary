@@ -9,12 +9,21 @@ A serverless dictionary completely hosted in a Twilio account. The application i
 - A Twilio account at https://www.twilio.com
 
 
-## Twilio Account Configuration
+## Setup
 
 1. Log in to your Twilio account 
-2. Rename the [.env.example](.env.example) file to just `.env`
-3. Copy the values of `ACCOUNT_SID` and `AUTH_TOKEN` to the `.env`file
-4. **Important:** _do not add the `.env` file to version control because it enables access to your Twilio account_  
+2. [Buy a Twilio phone number](https://support.twilio.com/hc/en-us/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console), take not of the number. 
+3. Rename the [.env.example](.env.example) file to just `.env`
+4. Copy the values of `ACCOUNT_SID`, `AUTH_TOKEN` and the `TWILIO_NUMBER` to the `.env` file
+5. **Important:** _do not add the `.env` file to version control because it contains your Twilio account credentials_  
+6. Exeute the [./scripts/setup.sh](./scripts/setup.sh) script
+
+
+## Local Development
+
+Start the local development environment with live reloading of Functions
+
+`npx twilio serverless:start`
 
 
 ## Deploy
@@ -26,5 +35,6 @@ A serverless dictionary completely hosted in a Twilio account. The application i
 
 | Tool                          | Example                               | Reference |
 | ----------------------------- | ------------------------------------- | --------- |
-| Twilio CLI tool               | `npx twilio-run --help`               | [twilio-run](https://github.com/twilio-labs/serverless-toolkit/tree/main/packages/twilio-run#twilio-run) |
+| Twilio CLI tool               | `npx twilio --help`                   | [twilio](https://www.twilio.com/docs/twilio-cli/quickstart) |
+| Twilio Run CLI tool           | `npx twilio-run --help`               | [twilio-run](https://github.com/twilio-labs/serverless-toolkit/tree/main/packages/twilio-run#twilio-run) |
 | Twilio Serverless CLI plugin  | `npx twilio-run serverless --cwd .`   | [plugin-serverless](https://github.com/twilio-labs/plugin-serverless#commands) | 
