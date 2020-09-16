@@ -13,10 +13,10 @@ A serverless dictionary completely hosted in a Twilio account. The application i
 
 1. Log in to your Twilio account 
 2. [Buy a Twilio phone number](https://support.twilio.com/hc/en-us/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console), take not of the number. 
-3. Rename the [.env.example](.env.example) file to just `.env`
-4. Copy the values of `ACCOUNT_SID`, `AUTH_TOKEN` and the `TWILIO_NUMBER` to the `.env` file
-5. **Important:** _do not add the `.env` file to version control because it contains your Twilio account credentials_  
-6. Exeute the [./scripts/setup.sh](./scripts/setup.sh) script
+3. Rename the [.env.twilio.example](.env.twilio.example) file to just `.env.twilio`
+4. Copy the values of `ACCOUNT_SID`, `AUTH_TOKEN` and the `TWILIO_NUMBER` to the `.env.twilio` file
+5. **Important:** _do not add the `.env.twilio` file to version control because it contains your Twilio account credentials_  
+6. Execute the [./scripts/setup.sh](./scripts/setup.sh) script
 
 
 ## Local Development
@@ -38,3 +38,8 @@ Start the local development environment with live reloading of Functions
 | Twilio CLI tool               | `npx twilio --help`                   | [twilio](https://www.twilio.com/docs/twilio-cli/quickstart) |
 | Twilio Run CLI tool           | `npx twilio-run --help`               | [twilio-run](https://github.com/twilio-labs/serverless-toolkit/tree/main/packages/twilio-run#twilio-run) |
 | Twilio Serverless CLI plugin  | `npx twilio-run serverless --cwd .`   | [plugin-serverless](https://github.com/twilio-labs/plugin-serverless#commands) | 
+
+
+## CLean up
+
+Execute the [./scripts/teardown.sh](./scripts/teardown.sh) script
