@@ -15,6 +15,7 @@ ENDPOINTS_ENV="${ROOT_DIR}/.env.endpoints"
 
 
 cd "${ROOT_DIR}" || exit
+
 # shellcheck disable=SC1090
 source "${TWILIO_ENV}"
 

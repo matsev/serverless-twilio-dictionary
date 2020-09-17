@@ -18,6 +18,7 @@ SYNC_MAP_NAME="dictionary"
 
 
 cd "${ROOT_DIR}" || exit
+
 # shellcheck disable=SC1090
 source "${TWILIO_ENV}"
 
@@ -35,18 +36,22 @@ echo "SYNC_MAP_SID=${SYNC_MAP_SID}" >> "${FUNCTIONS_ENV}"
 # Deploy Twilio Functions
 DEPLOY_OUTPUT=$(npx twilio serverless:deploy --force)
 echo "${DEPLOY_OUTPUT}"
-echo "${DEPLOY_OUTPUT}" > out.txt
 
 
 # Save endpoints
-SMS_ENDPOINT_URL=$(echo "${DEPLOY_OUTPUT}"  | grep -o "https://.*twil\.io/sms/dictionary")
-WEB_ENDPOINT_URL=$(echo "${DEPLOY_OUTPUT}"  | grep -o "https://.*twil\.io/index\.html")
+API_ENDPOINT=$(echo "${DEPLOY_OUTPUT}"  | grep -o "https://.*twil\.io/api")
+SMS_ENDPOINT=$(echo "${DEPLOY_OUTPUT}"  | grep -o "https://.*twil\.io/sms/dictionary")
+WEB_ENDPOINT=$(echo "${DEPLOY_OUTPUT}"  | grep -o "https://.*twil\.io/index\.html")
 
-echo "export SMS_ENDPOINT_URL=${SMS_ENDPOINT_URL}" >> "${ENDPOINTS_ENV}"
-echo "export WEB_ENDPOINT_URL=${WEB_ENDPOINT_URL}" >> "${ENDPOINTS_ENV}"
+
+{
+    echo "export API_ENDPOINT=${API_ENDPOINT}"
+    echo "export SMS_ENDPOINT=${SMS_ENDPOINT}"
+    echo "export WEB_ENDPOINT=${WEB_ENDPOINT}"
+} >> "${ENDPOINTS_ENV}"
 
 
 # Configure phone number with SMS endpoint
 echo "Configure phone number"
-npx twilio phone-numbers:update "${TWILIO_NUMBER}"  --sms-url="${SMS_ENDPOINT_URL}"
+npx twilio phone-numbers:update "${TWILIO_NUMBER}"  --sms-url="${SMS_ENDPOINT}"
 
