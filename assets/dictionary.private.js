@@ -112,9 +112,22 @@ const del = async (client, key) => {
 };
 
 
+const COMMAND_TABLE = {
+  C:      create,
+  CREATE: create,
+  R:      read,
+  READ:   read,
+  U:      update,
+  UPDATE: update,
+  D:      del,
+  DELETE: del,
+};
+
+
 module.exports = {
   create,
   read,
   update,
   del,
+  COMMAND_TABLE,
 };
