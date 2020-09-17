@@ -40,6 +40,12 @@ Start the local development environment with live reloading of Functions
 | Twilio Serverless CLI plugin  | `npx twilio-run serverless --cwd .`   | [plugin-serverless](https://github.com/twilio-labs/plugin-serverless#commands) | 
 
 
-## CLean up
+## Clean up
 
 Execute the [./scripts/teardown.sh](./scripts/teardown.sh) script
+
+
+## Resources
+
+- [Function and Assets API](https://www.twilio.com/docs/runtime)
+- [SYNC API, Map Item](https://www.twilio.com/docs/sync/api/map-item-resource)

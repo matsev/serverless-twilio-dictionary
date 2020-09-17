@@ -39,7 +39,7 @@ echo "${DEPLOY_OUTPUT}" > out.txt
 
 
 # Save endpoints
-SMS_ENDPOINT_URL=$(echo "${DEPLOY_OUTPUT}"  | grep -o "https://.*twil\.io/sms/reply")
+SMS_ENDPOINT_URL=$(echo "${DEPLOY_OUTPUT}"  | grep -o "https://.*twil\.io/sms/dictionary")
 WEB_ENDPOINT_URL=$(echo "${DEPLOY_OUTPUT}"  | grep -o "https://.*twil\.io/index\.html")
 
 echo "export SMS_ENDPOINT_URL=${SMS_ENDPOINT_URL}" >> "${ENDPOINTS_ENV}"
