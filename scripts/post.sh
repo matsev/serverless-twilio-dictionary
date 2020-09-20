@@ -14,4 +14,4 @@ ENDPOINTS_ENV="${ROOT_DIR}/.env.endpoints"
 source "${ENDPOINTS_ENV}"
 
 
-curl -XPOST -d "command=${1}&key=${2}&definition=${3}" "${API_ENDPOINT}"
+curl -XPOST -d "command=${1}&key=${2}&definition=${3}" "${API_ENDPOINT}" | jq
