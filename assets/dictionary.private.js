@@ -1,12 +1,22 @@
 const { SYNC_SERVICE_SID, SYNC_MAP_SID } = process.env;
 
+const STATUS_NOT_FOUND = 404;
+const STATUS_CONFLICT = 409;
 
-const doesNotExist = (key, err) => {
+const HTTP_STATUS_MESSAGES = {
+  [STATUS_NOT_FOUND]  : key => `${key} does not exist`,
+  [STATUS_CONFLICT]   : key => `${key} already exists`,
+};
+
+
+const resolveHttMessage = (key, err) => {
   const { status } = err;
-  return status === 404
+  const responseMessageFn = HTTP_STATUS_MESSAGES[status];
+
+  return responseMessageFn
     ? Promise.resolve({
       key,
-      msg: `${key} does not exist`,
+      msg: responseMessageFn(key),
     })
     : Promise.reject(err);
 };
@@ -36,7 +46,7 @@ const create = async (client, key, definition) => {
     })
     .catch(err => {
       console.info('created err:', JSON.stringify(err));
-      return Promise.reject(err);
+      return resolveHttMessage(key, err);
     });
 };
 
@@ -59,7 +69,7 @@ const read = async (client, key) => {
     })
     .catch(err => {
       console.error('read err:', JSON.stringify(err));
-      return doesNotExist(key, err);
+      return resolveHttMessage(key, err);
     });
 };
 
@@ -86,7 +96,7 @@ const update = async (client, key, definition) => {
     })
     .catch(err => {
       console.error('updated err:', JSON.stringify(err));
-      return doesNotExist(key, err);
+      return resolveHttMessage(key, err);
     });
 };
 
@@ -107,7 +117,7 @@ const del = async (client, key) => {
     })
     .catch(err => {
       console.error('deleted err:', JSON.stringify(err));
-      return doesNotExist(key, err);
+      return resolveHttMessage(key, err);
     });
 };
 
