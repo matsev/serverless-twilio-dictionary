@@ -28,6 +28,7 @@ A serverless dictionary completely hosted in a Twilio account. The application i
 6. Copy the values of `ACCOUNT_SID`, `AUTH_TOKEN` and the `TWILIO_NUMBER` (i.e. the phone number that you bought earlier) to the `.env.twilio` file
 7. **Important:** _do not add the `.env.twilio` file to version control because it contains your Twilio account credentials_  
 8. Execute the [./scripts/setup.sh](./scripts/setup.sh) script
+9. Optional, you can seed the dictionary with some entries using the [./scripts/upload.sh](./scripts/upload.sh) script
 
 After the initial deployment you can execute the following command to update your function: 
 ```bash
