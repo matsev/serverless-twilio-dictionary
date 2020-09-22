@@ -18,7 +18,10 @@
     "start": "twilio-run",
     "deploy": "twilio-run deploy"
   },
-  "dependencies": {},
+  "dependencies": {
+    "twilio": "^3.49.3",
+    "xmldom": "^0.3.0"
+  },
   "devDependencies": {
     "twilio-cli": "^2.8.1",
     "twilio-run": "^2.8.0"
