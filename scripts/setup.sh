@@ -58,7 +58,7 @@ rm -f "${ENDPOINTS_ENV}"
 
 # Configure phone number with SMS endpoint
 echo "Configure phone number"
-npx twilio phone-numbers:update "${TWILIO_NUMBER}"  --sms-url="${SMS_ENDPOINT}"
+npx twilio phone-numbers:update "${TWILIO_NUMBER}" --sms-url="${SMS_ENDPOINT}" --sms-method="POST"
 
 
 echo "Setup complete! See landing page for more instructions: ${WEB_ENDPOINT}"

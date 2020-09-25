@@ -22,7 +22,7 @@ source "${TWILIO_ENV}"
 
 # Remove phone number from SMS endpoint
 echo "Reset phone number"
-npx twilio phone-numbers:update "${TWILIO_NUMBER}"  --sms-url="https://demo.twilio.com/welcome/sms/" > /dev/null
+npx twilio phone-numbers:update "${TWILIO_NUMBER}"  --sms-url="https://demo.twilio.com/welcome/sms/" --sms-method="GET" > /dev/null
 
 # Remove Serverless
 if [ -f "${TWILIO_FUNCTIONS}" ]; then
