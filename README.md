@@ -1,6 +1,16 @@
 # Serverless Twilio Dictionary
 
-A serverless dictionary completely hosted in a Twilio account. The application is hosted on [Twilio Functions](https://www.twilio.com/docs/runtime/functions) and the data is persisted using [Twilio Sync](https://www.twilio.com/sync). The project was created using the [Serverless Toolkit](https://www.twilio.com/docs/labs/serverless-toolkit).
+A serverless dictionary completely hosted in a Twilio account. 
+
+
+## Architecture
+
+![architecture](architecture.svg)
+
+The backend architecture has been implemented using the following three services:
+- [Twilio Phone Numbers](https://www.twilio.com/phone-numbers) for registering and managing a virtual phone number
+- [Twilio Functions](https://www.twilio.com/docs/runtime/functions) for backend application hosting 
+- [Twilio Sync](https://www.twilio.com/sync) for data persistence 
 
 
 ## Prerequisites
