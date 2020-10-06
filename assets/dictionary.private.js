@@ -9,16 +9,21 @@ const HTTP_STATUS_MESSAGES = {
 };
 
 
-const resolveHttMessage = (key, err) => {
-  const { status } = err;
-  const responseMessageFn = HTTP_STATUS_MESSAGES[status];
+const resolveHttMessage = (cmd, key) => {
+  return (err) => {
+    const { status } = err;
+    const responseMessageFn = HTTP_STATUS_MESSAGES[status];
 
-  return responseMessageFn
-    ? Promise.resolve({
-      key,
-      msg: responseMessageFn(key),
-    })
-    : Promise.reject(err);
+    if (responseMessageFn) {
+      return Promise.resolve({
+        key,
+        msg: responseMessageFn(key),
+      })
+    } else {
+      console.error(`${cmd} err:`, JSON.stringify(err));
+      return Promise.reject(err);
+    }
+  }
 };
 
 
@@ -44,10 +49,7 @@ const create = async (client, key, definition) => {
         msg: `Created: ${key} - ${definition}`,
       };
     })
-    .catch(err => {
-      console.info('created err:', JSON.stringify(err));
-      return resolveHttMessage(key, err);
-    });
+    .catch(resolveHttMessage('create', key));
 };
 
 
@@ -67,10 +69,7 @@ const read = async (client, key) => {
         msg: `Read: ${key} - ${definition}`,
       };
     })
-    .catch(err => {
-      console.error('read err:', JSON.stringify(err));
-      return resolveHttMessage(key, err);
-    });
+    .catch(resolveHttMessage('read', key));
 };
 
 
@@ -94,10 +93,7 @@ const update = async (client, key, definition) => {
         msg: `Updated: ${key} - ${definition}`,
       };
     })
-    .catch(err => {
-      console.error('updated err:', JSON.stringify(err));
-      return resolveHttMessage(key, err);
-    });
+    .catch(resolveHttMessage('update', key));
 };
 
 
@@ -115,10 +111,7 @@ const del = async (client, key) => {
         msg: `Deleted: ${key}`,
       };
     })
-    .catch(err => {
-      console.error('deleted err:', JSON.stringify(err));
-      return resolveHttMessage(key, err);
-    });
+    .catch(resolveHttMessage('delete', key));
 };
 
 
