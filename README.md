@@ -7,10 +7,11 @@ A serverless dictionary completely hosted in a Twilio account.
 
 ![architecture](architecture.svg)
 
-The backend architecture has been implemented using the following three services:
+The backend architecture has been implemented using the following four services:
 - [Twilio Phone Numbers](https://www.twilio.com/phone-numbers) for registering and managing a virtual phone number
 - [Twilio Functions](https://www.twilio.com/docs/runtime/functions) for backend application hosting 
-- [Twilio Sync](https://www.twilio.com/sync) for data persistence 
+- [Twilio Sync](https://www.twilio.com/sync) for data persistence
+- [Twilio Assets](https://www.twilio.com/docs/runtime/assets) for hosting the app landing page
 
 
 ## Prerequisites
@@ -37,8 +38,11 @@ The backend architecture has been implemented using the following three services
 5. Rename the [.env.twilio.example](.env.twilio.example) file to just `.env.twilio`
 6. Copy the values of `ACCOUNT_SID`, `AUTH_TOKEN` and the `TWILIO_NUMBER` (i.e. the phone number that you bought earlier) to the `.env.twilio` file
 7. **Important:** _do not add the `.env.twilio` file to version control because it contains your Twilio account credentials_  
-8. Execute the [./scripts/setup.sh](./scripts/setup.sh) script
-9. Optional, you can seed the dictionary with some entries using the [./scripts/upload.sh](./scripts/upload.sh) script
+8. Execute the [./scripts/setup.sh](./scripts/setup.sh) script, take note of the url output after
+    > Setup complete! See landing page url for more instructions: [landing page url]
+9.  Optional, you can seed the dictionary with some entries using the [./scripts/upload.sh](./scripts/upload.sh) script
+10. You can verify the deployment by opening the `[landing page url]` mentioned in step `8` above. You will see your Twilio phone number as well as links to your Twilio Sync Service and Twilio Functions in your Twilio account where these services have been deployed.
+
 
 After the initial deployment you can execute the following command to update your function: 
 ```bash
@@ -83,7 +87,7 @@ For convenience, the service also has a public API endpoint and you can use the 
 >  ./scripts/post.sh delete TLA
 
 
-## Clean up
+## Clean Up
 
 Execute the [./scripts/teardown.sh](./scripts/teardown.sh) script
 
@@ -94,7 +98,7 @@ Execute the [./scripts/teardown.sh](./scripts/teardown.sh) script
 
 - [Function and Assets API](https://www.twilio.com/docs/runtime)
 - [Services API](https://www.twilio.com/docs/runtime/functions-assets-api/api/service)
-- [SYNC API, Map Item](https://www.twilio.com/docs/sync/api/map-item-resource)
+- [Sync API, Map Item](https://www.twilio.com/docs/sync/api/map-item-resource)
 
 ### CLI Tools
 
